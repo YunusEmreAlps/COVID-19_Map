@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19</title>
+    <!-- css -->
+    <link rel="stylesheet" href="index.css"/>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- Vue-Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
+</head>
+<body>
+    <!-- Data -->
+    <div class="container w-100 p-5" id="app">
+        <div class="form-group ldesgn">
+            <h2 class="text-dark text-center display-3 pb-3">COVID-19 DATA</h2>
+            <input type="text" class="form-control" v-model="srch" placeholder="Enter Country">
+            <span v-html="msg"></span>
+            <br/><hr/>
+            <ol class="form-check text-dark" style="font-size:24px;">
+                  <li v-for="cntry in filteredcntr">
+                        <span class="text-left text-dark font-weight-bold" style="font-size:24px;" v-text="cntry.country"></span>  
+                        <img class="pb-1" v-bind:src="cntry.countryInfo.flag" width="24" height="24"></img>
+                        <a href="#"><i class="fa float-right" style="font-size:24px">&#xf102;</i><a><br/><br/>
+                        <span  class="text-left text-dark" style="font-size:16px;"><span class="text-left text-dark font-weight-bold"><i style="font-size:16px" class="fa">&#xf0a9;</i>  Total Cases:</span> {{cntry.cases}}</span><br/>
+                        <span  class="text-left text-dark" style="font-size:16px;"><span class="text-left text-dark font-weight-bold"><i style="font-size:16px" class="fa">&#xf0a9;</i>  Total Recovered:</span> {{cntry.recovered}}</span><br/>
+                        <span  class="text-left text-dark" style="font-size:16px;"><span class="text-left text-dark font-weight-bold"><i style="font-size:16px" class="fa">&#xf0a9;</i>  Active Cases:</span> {{cntry.active}}</span><br/>
+                        <span  class="text-left text-dark" style="font-size:16px;"><span class="text-left text-dark font-weight-bold"><i style="font-size:16px" class="fa">&#xf0a9;</i>  Total Deaths:</span> {{cntry.deaths}}</span><br/>
+                        <span  class="text-left text-dark" style="font-size:16px;"><span class="text-left text-dark font-weight-bold"><i style="font-size:16px" class="fa">&#xf0a9;</i>  Critical:</span> {{cntry.critical}}</span><br/>    
+                        <span  class="text-left text-dark" style="font-size:16px;"><span class="text-left text-dark font-weight-bold"><i style="font-size:16px" class="fa">&#xf0a9;</i>  Today Cases:</span> {{cntry.todayCases}}</span><br/><br/>   
+                        <div class="row">
+                            <bar-chart class="col-sm-6 col-md-8 col-lg-6" ref="mycomp"></bar-chart>     
+                        </div>   
+                    <hr/>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Vue.js -->
+    <script src="script.js"></script>
+    
+</body>
+</html>
