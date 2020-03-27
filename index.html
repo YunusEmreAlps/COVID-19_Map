@@ -52,11 +52,16 @@
                     </tbody>
                 </table>
             </div>
+
+            <div class="row" v-if="cont==true">
+                <line-chart class="col-sm col-md-6 col-lg-6" :data="dataChart" :label="labelChart" :options="{responsive: true, maintainAspectRatio: false}"></line-chart>       
+            </div>
+
             <hr/>
 
             <ol class="form-check text-dark">
                   <li v-for="cntry in filteredcntr">
-                        <span class="text-left text-dark font-weight-bold" style="font-size:24px;" v-text="cntry.country"></span>  
+                        <span class="text-left text-dark font-weight-bold" style="font-size:24px;" v-text="cntry.country"></span>  <!-- v-bind="changeData(cntry)" -->
                         <a href="#"><i class="fa float-right" style="font-size:24px;">&#xf102;</i><a><br/><br/>   
                         <div class="table-responsive">
                             <table class="table table-striped">
@@ -85,9 +90,9 @@
                             </table>
                         </div>
 
-                        <div class="row">
-                            <bar-chart class="col-sm col-md-6 col-lg-6"></bar-chart>       
-                        </div>   
+                       <!--<div class="row">
+                            <line-chart class="col-sm col-md-6 col-lg-6" :data="dataChart" :label="labelChart" :options="{responsive: true, maintainAspectRatio: false}"></line-chart>       
+                        </div>-->   
                     <hr/>
                 </li>
             </ol>
