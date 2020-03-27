@@ -24,22 +24,69 @@
     <div class="container w-100 p-5" id="app">
         <div class="form-group ldesgn">
             <h2 class="text-dark text-center display-3 pb-3">COVID-19 DATA</h2>
-            <input type="text" class="form-control" v-model="srch" placeholder="Enter Country">
-            <span v-html="msg"></span>
-            <br/><hr/>
-            <ol class="form-check text-dark" style="font-size:24px;">
+            <input type="text" class="form-control mb-3" v-model="srch" placeholder="Enter Country"><br/>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead class="thead-light">
+                        <tr>    
+                            <th scope="col">Total</th>
+                            <th scope="col">Cases</th>
+                            <th scope="col">Recovered</th>
+                            <th scope="col">Active</th>
+                            <th scope="col">Deaths</th>
+                            <th scope="col">Critical</th>
+                            <th scope="col">Today Cases</th>
+                        </tr>     
+                    </thead>
+                    <tbody>
+                        <tr >
+                            <th scope="row"><i class="fa">&#xf0a9;</i> </th>
+                            <td>{{totalc}}</td>
+                            <td>{{totalr}}</td>
+                            <td>{{totalac}}</td>
+                            <td>{{totald}}</td>
+                            <td>{{tcritic}}</td>
+                            <td>{{todcas}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <hr/>
+
+            <ol class="form-check text-dark">
                   <li v-for="cntry in filteredcntr">
                         <span class="text-left text-dark font-weight-bold" style="font-size:24px;" v-text="cntry.country"></span>  
-                        <img class="pb-1" v-bind:src="cntry.countryInfo.flag" width="24" height="24"></img>
-                        <a href="#"><i class="fa float-right" style="font-size:24px">&#xf102;</i><a><br/><br/>
-                        <span  class="text-left text-dark" style="font-size:16px;"><span class="text-left text-dark font-weight-bold"><i style="font-size:16px" class="fa">&#xf0a9;</i>  Total Cases:</span> {{cntry.cases}}</span><br/>
-                        <span  class="text-left text-dark" style="font-size:16px;"><span class="text-left text-dark font-weight-bold"><i style="font-size:16px" class="fa">&#xf0a9;</i>  Total Recovered:</span> {{cntry.recovered}}</span><br/>
-                        <span  class="text-left text-dark" style="font-size:16px;"><span class="text-left text-dark font-weight-bold"><i style="font-size:16px" class="fa">&#xf0a9;</i>  Active Cases:</span> {{cntry.active}}</span><br/>
-                        <span  class="text-left text-dark" style="font-size:16px;"><span class="text-left text-dark font-weight-bold"><i style="font-size:16px" class="fa">&#xf0a9;</i>  Total Deaths:</span> {{cntry.deaths}}</span><br/>
-                        <span  class="text-left text-dark" style="font-size:16px;"><span class="text-left text-dark font-weight-bold"><i style="font-size:16px" class="fa">&#xf0a9;</i>  Critical:</span> {{cntry.critical}}</span><br/>    
-                        <span  class="text-left text-dark" style="font-size:16px;"><span class="text-left text-dark font-weight-bold"><i style="font-size:16px" class="fa">&#xf0a9;</i>  Today Cases:</span> {{cntry.todayCases}}</span><br/><br/>   
+                        <a href="#"><i class="fa float-right" style="font-size:24px;">&#xf102;</i><a><br/><br/>   
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead class="thead-light">
+                                    <tr>    
+                                        <th scope="col"><img class="pb-1" v-bind:src="cntry.countryInfo.flag" width="24" height="24"></img></th>
+                                        <th scope="col">Cases</th>
+                                        <th scope="col">Recovered</th>
+                                        <th scope="col">Active</th>
+                                        <th scope="col">Deaths</th>
+                                        <th scope="col">Critical</th>
+                                        <th scope="col">Today Cases</th>
+                                    </tr>     
+                                </thead>
+                                <tbody>
+                                    <tr >
+                                        <th scope="row"><i class="fa">&#xf0a9;</i> </th>
+                                        <td>{{cntry.cases}}</td>
+                                        <td>{{cntry.recovered}}</td>
+                                        <td>{{cntry.active}}</td>
+                                        <td>{{cntry.deaths}}</td>
+                                        <td>{{cntry.critical}}</td>
+                                        <td>{{cntry.todayCases}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
                         <div class="row">
-                            <bar-chart class="col-sm-6 col-md-8 col-lg-6" ref="mycomp"></bar-chart>     
+                            <bar-chart class="col-sm col-md-6 col-lg-6"></bar-chart>       
                         </div>   
                     <hr/>
                 </li>
@@ -49,6 +96,9 @@
 
     <!-- Vue.js -->
     <script src="script.js"></script>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     
 </body>
 </html>

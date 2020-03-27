@@ -1,10 +1,11 @@
+// Chart Component
 Vue.component('bar-chart', {
     extends: VueChartJs.Bar,
     // data 
     data: function() {
         return {
             datacollection: {
-                labels: ['Total Cases','Total Recovered', 'Active Cases','Total Deaths', 'Critical', 'Today Cases'],
+                labels: ['Day'],
                 datasets: [
                     {
                         label: 'COVID-19 Data',
@@ -44,18 +45,24 @@ Vue.component('bar-chart', {
     mounted () {
         // this.chartData is created in the mixin
         this.renderChart(this.datacollection, this.options)
-    },    
+    },
 });
 
 // Vue.js
 var app = new Vue({
     el:"#app", // element
     data: {
-        msg: null,
-        counter: 0,
-        control: false,
+        totalc: 0, // total cases
+        totalr: 0, // total recovered
+        totalac: 0, // total active cases
+        totald: 0, // total death
+        tcritic: 0, // total critic
+        todcas: 0, // total today cases
         srch: '',
-        countries : []
+        countries: [],
+        styleObject: {
+            fontSize: '16px'
+        }
     },
     created () {
         this.gdata();
@@ -73,10 +80,15 @@ var app = new Vue({
             .then(Response => Response.json())
             .then(Response => {
                 for(var i=0;i<Response.length; i++){
-                    this.countries.push(Response[i])
+                    this.countries.push(Response[i]);
+                    this.totalc+=this.countries[i].cases;
+                    this.totalr+=this.countries[i].recovered;
+                    this.totalac+=this.countries[i].active;
+                    this.totald+=this.countries[i].deaths;
+                    this.tcritic+=this.countries[i].critical;
+                    this.todcas+=this.countries[i].todayCases;
                 } 
             });
-        },     
-
+        },
     },
 });
