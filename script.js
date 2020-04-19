@@ -73,7 +73,7 @@ var app = new Vue({
     },
     methods: {
         gdata(){
-            fetch('https://corona.lmao.ninja/countries')
+            fetch('https://corona.lmao.ninja/v2/countries')
             .then(Response => Response.json())
             .then(Response => {
                 for(var i=0;i<Response.length; i++){
