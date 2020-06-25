@@ -1,4 +1,4 @@
-# COVID-19 Data with Vue.js
+# COVID-19 Map with Vue.js
 
-> Responsive Design (Tables, Chart, ...)
-> **[You can try](https://yunusemrealps.github.io/ToDoList/.)**
+> Responsive Design (Tables, Chart, ...)<br/>
+> **[You can try](https://yunusemrealps.github.io/COVID-19_Map/)**
