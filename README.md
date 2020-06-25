@@ -1,4 +1,3 @@
-# covid19-statistics
-[You Can Try](https://yunusemrealps.github.io/covid19-statistics/index.html)
+# Vue.js Todos-Example
 
-!!! Charts is Coming Soon
+[You can try](https://yunusemrealps.github.io/Todos-Example/index.html)

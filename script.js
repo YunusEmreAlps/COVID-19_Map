@@ -1,44 +1,36 @@
 Vue.component("line-chart", {
-    extends: VueChartJs.Radar,
-    props: ["data", "label", "options"], // connection !important
-    mounted() { 
-      this.renderLineChart();
+  extends: VueChartJs.Pie,
+  props: ["data", "label", "options"], // connection !important
+  mounted() { 
+    this.renderLineChart();
+  },
+  // update data 
+  computed: {
+    chartData: function() {
+      return this.data;
     },
-    // update data 
-    computed: {
-      chartData: function() {
-        return this.data;
-      },
-      chartLabel: function() {
-        return this.label;
-      }
-    },
-    methods: {
-      renderLineChart: function() {
+    chartLabel: function() {
+      return this.label;
+    }
+  },
+  methods: {
+    renderLineChart: function() {
       this.renderChart(
-        {
-          labels:this.chartLabel,
-          datasets: [
-            {
-              label: "COVID-19 Data",
-              backgroundColor: "#f87979",
-              data: this.chartData
-            }
-          ]
-        },
-        { responsive: true, maintainAspectRatio: false }
+      {
+        labels:this.chartLabel,
+        datasets: [
+          {
+            label: "COVID-19 Data",
+            backgroundColor: ["#bd081c", "#02b875", "#21759b", "#cd201f", "#34465d", "#007ee5"],
+            data: this.chartData
+          }
+        ]
+       },
+       { responsive: true, maintainAspectRatio: false }
       );      
-      }
-    },
-   /* watch: {
-      data: function() {
-        this._chart.destroy();
-        //this.renderChart(this.data, this.options);
-        this.renderLineChart();
-      }
-    }*/
-  });
-
+    }
+  },
+});
 
 // Vue.js
 var app = new Vue({
@@ -58,7 +50,7 @@ var app = new Vue({
         }, 
         hdata: [],
         dataChart: [],
-        labelChart: ['Cases','Recovered','Active','Deaths','Critical','Today Cases']
+        labelChart: ['Infected','Recovered','Active','Deaths','Critical','Today Cases']
     },
     created () {
         this.gdata();
@@ -104,12 +96,5 @@ var app = new Vue({
               }                  
           });
         },
-        changeData: function(e) {
-          // e = e.charAt(0).toUpperCase()+e.slice(1);
-          //for(x in this.hdata){ 
-            //this.labelChart.push(x);
-            // this.dataChart.push(Response.timeline.deaths[x]);
-          //}
-        }
     },
 });

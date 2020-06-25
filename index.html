@@ -1,109 +1,179 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
-    <!-- responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COVID-19</title>
-    <!-- css -->
-    <link rel="stylesheet" href="index.css"/>
-    <!-- font awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>COVID-19 MAP</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/new-age.min.css" rel="stylesheet">
     <!-- development version, includes helpful console warnings -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <!-- Vue-Chart.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
     <script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
-</head>
-<body>
-    <!-- Data -->
-    <div class="container w-100 p-5" id="app">
-        <div class="form-group ldesgn">
-            <h2 class="text-dark text-center display-3 pb-3">COVID-19 DATA</h2>
-            <input type="text" class="form-control mb-3" v-model="srch" placeholder="Enter Country"><br/>
-
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead class="thead-light">
-                        <tr>    
-                            <th scope="col">Total</th>
-                            <th scope="col">Cases</th>
-                            <th scope="col">Recovered</th>
-                            <th scope="col">Active</th>
-                            <th scope="col">Deaths</th>
-                            <th scope="col">Critical</th>
-                            <th scope="col">Today Cases</th>
-                        </tr>     
-                    </thead>
-                    <tbody>
-                        <tr >
-                            <th scope="row"><i class="fa">&#xf0a9;</i> </th>
-                            <td>{{totalc}}</td>
-                            <td>{{totalr}}</td>
-                            <td>{{totalac}}</td>
-                            <td>{{totald}}</td>
-                            <td>{{tcritic}}</td>
-                            <td>{{todcas}}</td>
+  </head>
+  <body id="page-top" class="bg-light">
+    <!-- Section -->
+    <section>
+      <div class="container" id="app">
+        <!-- Grid row -->
+        <div class="row d-flex justify-content-center mt-5">
+          <!-- Grid column-->
+          <div class="col-md-12 col-sm-10">
+            <div class="border border-dark bg-white">
+              <!-- Header -->
+              <div class="section-heading text-center mt-5">
+                <img alt="avatar" src="img/avatar.png" width="100" height="100" />
+                <h2 class="text-secondary">COVID-19 STATISTICS - GLOBAL</h2>
+                <span class="text-muted">All Data</span>
+                <hr/>
+              </div>
+              <!-- Header -->
+              <!-- Global -->
+              <div class="row mt-3 ml-5 mb-5 mr-5">
+                <!-- Total Cases -->
+                <div class="col-lg-4 col-md-6 my-auto">
+                  <div class="card  mb-3" style="max-width: 18rem; border-width:0px 0px 5px 0px; border-color: #bd081c;">
+                    <div class="card-body">
+                      <h5 class="card-title text-center" style="font-size: 35px;">{{totalc}}</h5>
+                      <p class="card-text text-center font-weight-bold" style="font-size: 35px;">Infected</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Total Cases -->
+                <!-- Recovered -->
+                <div class="col-lg-4 col-md-6 my-auto">
+                  <div class="card mb-3" style="max-width: 18rem; border-width:0px 0px 5px 0px; border-color: #02b875;">
+                    <div class="card-body">
+                      <h5 class="card-title text-center" style="font-size: 35px;">{{totalr}}</h5>
+                      <p class="card-text text-center font-weight-bold" style="font-size: 35px;">Recovered</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Recovered -->
+                <!-- Active Cases -->
+                <div class="col-lg-4 col-md-6 my-auto">
+                  <div class="card mb-3" style="max-width: 18rem; border-width:0px 0px 5px 0px; border-color: #21759b;">
+                    <div class="card-body">
+                      <h5 class="card-title text-center" style="font-size: 35px;">{{totalac}}</h5>
+                      <p class="card-text text-center font-weight-bold" style="font-size: 35px;">Active</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Active Cases -->
+                <!-- Total Deaths -->
+                <div class="col-lg-4 col-md-6 my-auto">
+                  <div class="card mb-3" style="max-width: 18rem; border-width:0px 0px 5px 0px; border-color: #cd201f;">
+                    <div class="card-body">
+                      <h5 class="card-title text-center" style="font-size: 35px;">{{totald}}</h5>
+                      <p class="card-text text-center font-weight-bold" style="font-size: 35px;">Deaths</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Total Deaths -->
+                <!-- Critical -->
+                <div class="col-lg-4 col-md-6 my-auto">
+                  <div class="card mb-3" style="max-width: 18rem; border-width:0px 0px 5px 0px; border-color: #34465d;">
+                    <div class="card-body">
+                      <h5 class="card-title text-center" style="font-size: 35px;">{{tcritic}}</h5>
+                      <p class="card-text text-center font-weight-bold" style="font-size: 35px;">Critical</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Critical -->
+                <!-- Today Cases -->
+                <div class="col-lg-4 col-md-6 my-auto">
+                  <div class="card mb-3" style="max-width: 18rem; border-width:0px 0px 5px 0px; border-color: #007ee5;">
+                    <div class="card-body">
+                      <h5 class="card-title text-center" style="font-size: 35px;">{{todcas}}</h5>
+                      <p class="card-text text-center font-weight-bold" style="font-size: 35px;">Today Cases</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Today Cases -->                                                 
+              </div>  
+              <!-- Global -->
+            
+              <div class="d-block mx-auto" v-if="cont==true">
+                <line-chart  :data="dataChart" :label="labelChart" :options="{responsive: true, maintainAspectRatio: false}"></line-chart>       
+              </div>  
+          
+              <div class="mt-3 ml-5 mb-5 mr-5">
+                <!-- Task input -->
+                <div class="form-group">
+                    <label for="username-label">Enter Country</label>
+                    <input type="text" class="form-control mb-3" v-model="srch"><br/>
+                <div>   
+                <!-- Task input -->
+            
+                <!-- List -->
+                <ul class="list-group text-dark">
+                  <!-- Table -->
+                  <div class="table-responsive">
+                    <table class="table table-bordered table-dark">
+                      <thead>
+                        <tr>
+                          <th scope="col">Country</th>
+                          <th scope="col">Cases</th>
+                          <th scope="col">Recovered</th>
+                          <th scope="col">Active</th>
+                          <th scope="col">Deaths</th>
+                          <th scope="col">Critical</th>
+                          <th scope="col">Today Cases</th>
                         </tr>
-                    </tbody>
-                </table>
+                      </thead>
+                      <tbody>
+                        <!-- List -->
+                        <tr v-for="cntry in filteredcntr">
+                          <td scope="row" data-label="Country"><img class="pb-1" v-bind:src="cntry.countryInfo.flag" width="24" height="24"></img> &nbsp; {{cntry.country}}</td>
+                          <td data-label="Cases">{{cntry.cases}}</td>
+                          <td data-label="Recovered">{{cntry.recovered}}</td>
+                          <td data-label="Active">{{cntry.active}}</td>
+                          <td data-label="Deaths">{{cntry.deaths}}</td>
+                          <td data-label="Critical">{{cntry.critical}}</td>
+                          <td data-label="Today Cases">{{cntry.todayCases}}</td>
+                        </tr>      
+                        <!-- List -->
+                      </tbody>
+                    </table> 
+                  </div>
+                  <!-- Table -->
+                </ul>
+                <!-- List -->
+              </div>
             </div>
-
-            <div class="row" v-if="cont==true">
-                <line-chart class="col-sm col-md-6 col-lg-6" :data="dataChart" :label="labelChart" :options="{responsive: true, maintainAspectRatio: false}"></line-chart>       
-            </div>
-
-            <hr/>
-
-            <ol class="form-check text-dark">
-                  <li v-for="cntry in filteredcntr">
-                        <span class="text-left text-dark font-weight-bold" style="font-size:24px;" v-text="cntry.country"></span>  <!-- v-bind="changeData(cntry)" -->
-                        <a href="#"><i class="fa float-right" style="font-size:24px;">&#xf102;</i><a><br/><br/>   
-                        <div class="table-responsive">
-                            <table class="table table-striped">
-                                <thead class="thead-light">
-                                    <tr>    
-                                        <th scope="col"><img class="pb-1" v-bind:src="cntry.countryInfo.flag" width="24" height="24"></img></th>
-                                        <th scope="col">Cases</th>
-                                        <th scope="col">Recovered</th>
-                                        <th scope="col">Active</th>
-                                        <th scope="col">Deaths</th>
-                                        <th scope="col">Critical</th>
-                                        <th scope="col">Today Cases</th>
-                                    </tr>     
-                                </thead>
-                                <tbody>
-                                    <tr >
-                                        <th scope="row"><i class="fa">&#xf0a9;</i> </th>
-                                        <td>{{cntry.cases}}</td>
-                                        <td>{{cntry.recovered}}</td>
-                                        <td>{{cntry.active}}</td>
-                                        <td>{{cntry.deaths}}</td>
-                                        <td>{{cntry.critical}}</td>
-                                        <td>{{cntry.todayCases}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                       <!--<div class="row">
-                            <line-chart class="col-sm col-md-6 col-lg-6" :data="dataChart" :label="labelChart" :options="{responsive: true, maintainAspectRatio: false}"></line-chart>       
-                        </div>-->   
-                    <hr/>
-                </li>
-            </ol>
+          </div>
+          <!-- Grid column-->
         </div>
-    </div>
-
-    <!-- Vue.js -->
-    <script src="script.js"></script>
-    <!-- JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section -->
     
-</body>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/new-age.min.js"></script>
+    <!-- Vue.js -->
+    <script src="script.js"></script>         
+  </body>
 </html>
