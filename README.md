@@ -1,3 +1,4 @@
-# Vue.js Todos-Example
+# COVID-19 Data with Vue.js
 
-[You can try](https://yunusemrealps.github.io/Todos-Example/index.html)
+> Responsive Design (Tables, Chart, ...)
+> **[You can try](https://yunusemrealps.github.io/ToDoList/.)**
