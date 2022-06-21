@@ -1,4 +1,4 @@
-Vue.component("line-chart", {
+/*Vue.component("line-chart", {
   extends: VueChartJs.Pie,
   props: ["data", "label", "options"], // connection !important
   mounted() { 
@@ -30,7 +30,7 @@ Vue.component("line-chart", {
       );      
     }
   },
-});
+});*/
 
 // Vue.js
 var app = new Vue({
